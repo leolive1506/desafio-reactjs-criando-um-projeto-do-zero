@@ -3,8 +3,24 @@
   margin: 0 auto;
   padding: 2rem;
 
+  .nextPosts {
+    border: 0;
+    background: transparent;
+    margin-top: 2.5rem;
+    color: var(--hightlight);
+    font-weight: 600;
+    transition: filter 0.5ms ease-out;
+
+    &:hover {
+      filter: brightness(0.9)
+    }
+  }
 }
+
 .postContainer {
+  & + .postContainer {
+    margin-top: 2.5rem;
+  }
   h1 {
     color: var(--heading);
     font-weight: 700;
@@ -34,6 +50,7 @@
       font-weight: 400;
       font-size: 0.8rem;
       line-height: 1rem;
+      text-transform: capitalize;
     }
   }
 }

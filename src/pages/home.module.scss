@@ -1,1 +1,42 @@
-// TODO
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  header {
+    padding: 2rem 0;
+  }
+}
+.postContainer {
+  h1 {
+    color: var(--heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 0.25rem 0;
+  }
+
+  strong {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  div {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    svg {
+      margin-right: .5rem;
+    }
+
+    time, p {
+      font-weight: 400;
+      font-size: 0.8rem;
+      line-height: 1rem;
+    }
+  }
+}

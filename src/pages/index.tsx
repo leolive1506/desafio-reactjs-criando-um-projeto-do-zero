@@ -6,6 +6,7 @@ import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import Header from '../components/Header';
 
 interface Post {
   uid?: string;
@@ -29,9 +30,7 @@ interface HomeProps {
 export default function Home({ postsPagination }: HomeProps) {
   return (
     <div className={styles.container}>
-      <header>
-        <img src="/logo.svg" alt="logo" />
-      </header>
+      <Header />
       <section>
         <article className={styles.postContainer}>
           <Link href="/post">

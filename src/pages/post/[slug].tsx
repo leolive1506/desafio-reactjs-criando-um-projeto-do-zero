@@ -35,7 +35,6 @@ interface PostProps {
 const MEDIA_DE_PALAVRAS = 200;
 
 export default function Post({ post }: PostProps) {
-  console.log(post)
   const router = useRouter()
 
   if(router.isFallback) {
@@ -45,7 +44,8 @@ export default function Post({ post }: PostProps) {
 
   const handleCountAverageReading = post.data.content.reduce((acc, post) => {
       post.body.map(el => {
-        acc += el.text.length
+        const words = el.text.split(' ')
+        acc += words.length
       })
 
       return acc
@@ -78,7 +78,7 @@ export default function Post({ post }: PostProps) {
               <time>
                 <AiOutlineClockCircle />
                 {/* TODO: VERIFICAR GEITO USAR USECALLBACK OU USEMEMO */}
-                {Math.ceil(handleCountAverageReading / MEDIA_DE_PALAVRAS)} min
+                {String(Math.ceil(handleCountAverageReading / MEDIA_DE_PALAVRAS)) + ' min'}
               </time>
             </div>
 

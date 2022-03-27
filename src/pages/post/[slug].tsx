@@ -8,10 +8,8 @@ import { BsCalendar4 } from 'react-icons/bs';
 import Prismic from '@prismicio/client'
 import { getPrismicClient } from '../../services/prismic';
 
-import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 import { useRouter } from 'next/router';
-
 interface Post {
   uid: string
   first_publication_date: string | null;
@@ -30,10 +28,11 @@ interface Post {
     }[];
   };
 }
-
 interface PostProps {
   post: Post;
 }
+
+const MEDIA_DE_PALAVRAS = 200;
 
 export default function Post({ post }: PostProps) {
   console.log(post)
@@ -42,6 +41,16 @@ export default function Post({ post }: PostProps) {
   if(router.isFallback) {
     return <h1>Carregando...</h1>
   }
+
+
+  const handleCountAverageReading = post.data.content.reduce((acc, post) => {
+      post.body.map(el => {
+        acc += el.text.length
+      })
+
+      return acc
+    }, 0)
+
   return (
     <div className={styles.container}>
       <img src={post.data.banner.url} alt="Banner" />
@@ -68,7 +77,8 @@ export default function Post({ post }: PostProps) {
               </p>
               <time>
                 <AiOutlineClockCircle />
-                4 min
+                {/* TODO: VERIFICAR GEITO USAR USECALLBACK OU USEMEMO */}
+                {Math.ceil(handleCountAverageReading / MEDIA_DE_PALAVRAS)} min
               </time>
             </div>
 
@@ -95,12 +105,10 @@ export const getStaticPaths = async () => {
     fetch: ['posts.title', 'posts.subtitle', 'posts.author', 'posts.content'],
     pageSize: 3,
   })
-  // console.log(JSON.stringify(posts, null, 2))
-  // console.log(posts.results[0].uid)
+
   const postsPaths = posts.results.map(post => {
     return { params: { slug: post.uid } }
   })
-
 
   return {
     paths: postsPaths,
@@ -133,6 +141,5 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     props: {
       post
     },
-    // redirect: 60 * 30
   }
 };

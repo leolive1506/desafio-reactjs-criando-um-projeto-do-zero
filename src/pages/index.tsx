@@ -101,19 +101,11 @@ export const getStaticProps: GetStaticProps = async () => {
     pageSize: 1,
   })
 
-  console.log(response)
-
   const posts = response.results.map(post => {
     return {
       uid: post.uid,
       first_publication_date: post.first_publication_date,
-      // format(
-      //   new Date(post.first_publication_date),
-      //   "dd MMM uu",
-      //   {
-      //     locale: ptBR,
-      //   }
-      // ),
+
       data: {
         title: post.data.title,
         subtitle: post.data.subtitle,

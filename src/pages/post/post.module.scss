@@ -1,1 +1,71 @@
-// TODO
+.container {
+  max-width: 100%;
+  img {
+    width: 100vw;
+    height: auto;
+    max-height: 25rem;
+    object-fit: cover;
+    max-width: 100%;
+
+  }
+
+  section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    article {
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 3rem;
+      }
+
+      .resume {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1.5rem;
+
+        svg {
+          margin-right: 0.5rem;
+        }
+
+        time, p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+
+.containerPost {
+  .contentPost {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      margin: 1.5rem 0;
+    }
+
+    ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin: 0.5rem 0;
+      }
+    }
+
+  }
+}
